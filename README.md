@@ -11,5 +11,5 @@
 ##How to Build:##
 1-Compile:
 >"dtmirizzi@Deo:~/gitRepos/C-CryptoLockerResearch$ gcc -o test.out cryptoLocker.c rsa.c"
-2-And run: 
+< 2-And run: 
 >"dtmirizzi@Deo:~/gitRepos/C-CryptoLockerResearch$ ./test.out"

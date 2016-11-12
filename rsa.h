@@ -19,7 +19,7 @@ struct private_key_class{
   long long modulus;
   long long exponent;
 };
-
+void printKeys(struct public_key_class *pub , struct private_key_class *priv);
 // This function generates public and private keys, then stores them in the structures you
 // provide pointers to. The 3rd argument should be the text PRIME_SOURCE_FILE to have it use
 // the location specified above in this header.

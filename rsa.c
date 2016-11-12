@@ -20,6 +20,10 @@ struct private_key_class{
   long long exponent;
 };
 
+void printKeys(struct public_key_class *pub , struct private_key_class *priv){
+  printf("Private Key:\n Modulus: %lld\n Exponent: %lld\n", (long long)priv->modulus, (long long) priv->exponent);
+  printf("Public Key:\n Modulus: %lld\n Exponent: %lld\n", (long long)pub->modulus, (long long) pub->exponent);
+}
 
 // This should totally be in the math library.
 long long gcd(long long a, long long b)
@@ -142,6 +146,7 @@ void rsa_gen_keys(struct public_key_class *pub, struct private_key_class *priv, 
 
   priv->modulus = max;
   priv->exponent = d;
+  
 }
 
 

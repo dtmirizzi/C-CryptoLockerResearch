@@ -3,8 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv){
   struct public_key_class pub[1];
   struct private_key_class priv[1];
   rsa_gen_keys(pub, priv, PRIME_SOURCE_FILE);

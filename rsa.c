@@ -10,17 +10,13 @@ char buffer[1024];
 const int MAX_DIGITS = 50;
 int i,j = 0;
 
-struct public_key_class{
+struct key_class{
   long long modulus;
   long long exponent;
 };
 
-struct private_key_class{
-  long long modulus;
-  long long exponent;
-};
 
-void printKeys(struct public_key_class *pub , struct private_key_class *priv){
+void printKeys(struct key_class *pub , struct key_class *priv){
   printf("Private Key:\n Modulus: %lld\n Exponent: %lld\n", (long long)priv->modulus, (long long) priv->exponent);
   printf("Public Key:\n Modulus: %lld\n Exponent: %lld\n", (long long)pub->modulus, (long long) pub->exponent);
 }
@@ -66,7 +62,7 @@ long long rsa_modExp(long long b, long long e, long long m)
 
 // Calling this function will generate a public and private key and store them in the pointers
 // it is given. 
-void rsa_gen_keys(struct public_key_class *pub, struct private_key_class *priv, char *PRIME_SOURCE_FILE)
+void rsa_gen_keys(struct key_class *pub, struct key_class *priv, char *PRIME_SOURCE_FILE)
 {
   FILE *primes_list;
   if(!(primes_list = fopen(PRIME_SOURCE_FILE, "r"))){
@@ -151,7 +147,7 @@ void rsa_gen_keys(struct public_key_class *pub, struct private_key_class *priv, 
 
 
 long long *rsa_encrypt(const char *message, const unsigned long message_size, 
-                     const struct public_key_class *pub)
+                     const struct key_class *pub)
 {
   long long *encrypted = malloc(sizeof(long long)*message_size);
   if(encrypted == NULL){
@@ -169,7 +165,7 @@ long long *rsa_encrypt(const char *message, const unsigned long message_size,
 
 char *rsa_decrypt(const long long *message, 
                   const unsigned long message_size, 
-                  const struct private_key_class *priv)
+                  const struct key_class *priv)
 {
   if(message_size % sizeof(long long) != 0){
     fprintf(stderr,
